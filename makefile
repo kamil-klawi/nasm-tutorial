@@ -33,6 +33,31 @@ stack: stack.o
 stack.o: asm/stack.asm | build
 	nasm -f elf64 -g -F dwarf asm/stack.asm -o build/stack.o -l build/stack.lst
 
+fcalc: fcalc.o
+	gcc -o build/fcalc build/fcalc.o -no-pie
+fcalc.o: asm/fcalc.asm | build
+	nasm -f elf64 -g -F dwarf asm/fcalc.asm -o build/fcalc.o -l build/fcalc.lst
+
+function: function.o
+	gcc -o build/function build/function.o -no-pie
+function.o: asm/function.asm | build
+	nasm -f elf64 -g -F dwarf asm/function.asm -o build/function.o -l build/function.lst
+
+function2: function2.o
+	gcc -o build/function2 build/function2.o -no-pie
+function2.o: asm/function2.asm | build
+	nasm -f elf64 -g -F dwarf asm/function2.asm -o build/function2.o -l build/function2.lst
+
+macro: macro.o
+	gcc -o build/macro build/macro.o -no-pie
+macro.o: asm/macro.asm | build
+	nasm -f elf64 -g -F dwarf asm/macro.asm -o build/macro.o -l build/macro.lst
+
+console: console.o
+	gcc -o build/console build/console.o -no-pie
+console.o: asm/console.asm | build
+	nasm -f elf64 -g -F dwarf asm/console.asm -o build/console.o -l build/console.lst
+
 clean:
 	rm -rf build
 
