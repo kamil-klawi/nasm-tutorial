@@ -58,6 +58,14 @@ console: console.o
 console.o: asm/console.asm | build
 	nasm -f elf64 -g -F dwarf asm/console.asm -o build/console.o -l build/console.lst
 
+file: file.o
+	gcc -o build/file build/file.o -no-pie
+file.o: asm/file.asm | build
+	nasm -f elf64 -g -F dwarf asm/file.asm -o build/file.o -l build/file.lst
+
+inline: source/inline.c
+	gcc -o build/inline source/inline.c -masm=intel -no-pie
+
 clean:
 	rm -rf build
 
